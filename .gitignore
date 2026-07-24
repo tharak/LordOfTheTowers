@@ -1,0 +1,40 @@
+# Unreal Engine generated files
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Visual Studio / JetBrains Rider
+.vs/
+.idea/
+.vscode/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.code-workspace
+
+# Compiled source and debug artifacts
+*.dll
+*.exe
+*.pdb
+*.obj
+*.iobj
+*.ipdb
+*.log
+
+# Unreal Engine user-specific settings
+Config/DefaultEditorPerProjectUserSettings.ini
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local environment files
+.env
+.env.*
+!.env.example
