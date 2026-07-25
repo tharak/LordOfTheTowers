@@ -1,0 +1,20 @@
+﻿{
+  "strNormal": "1.0",
+  "strRoad": "1.0",
+  "clrShadow": "#DDDDDD",
+  "clrRoad": "#000000",
+  "strThin": "0.5",
+  "clrShallow": "#EEEEEE",
+  "clrStone": "#FFFFFF",
+  "clrInk": "#000000",
+  "clrGrass": "#FFFFFF",
+  "clrRoof": [
+    "#FFFFFF"
+  ],
+  "clrLights": "#000000",
+  "clrBg": "#FFFFFF",
+  "clrWater": "#FFFFFF",
+  "clrTree": [
+    "#FFFFFF"
+  ]
+}

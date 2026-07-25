@@ -1,0 +1,105 @@
+{
+	"district"	: [
+		"#regularHood#",
+		"0.3?-#gateHood#",
+		"0.2?-#bridgeHood#",
+		"0.2?-#bankHood#",
+		"0.2?-#docksHood#",
+		"0.1?-#centralHood#",
+		"0.1?-#parkHood#"],
+
+	"regularHood"	: [
+		"0.05?-#number# #noun.s#",
+		"0.10?-the {#noun#|0.5?-#noun.s#}",
+		"0.20?-{#adj#|0.1?-#dir#} #ward#",
+		"#adj# {#noun#|#place#|#ward#}"],
+
+	"parkHood"	: [
+		"the #park#",
+		"{#proper#|#proper.possessive#} #park#",
+		"#adj# #park#"],
+
+	"gateHood"		: [
+		"{#adj#|0.5?-#dir#} #gate#",
+		"0.1?-#proper.possessive# #gate#"],
+
+	"bridgeHood"	: [
+		"#adj# #bridge#",
+		"0.1?-#proper.possessive# #bridge#"],
+
+	"docksHood"		: [
+		"the #docks#",
+		"#docks# #ward#",
+		"{#adj#|0.2?-#dir#} #docks#"],
+
+	"streetHood"	: [
+		"{#adj#|0.5?-#compNoun#|0.2?-#dir#} #street#"],
+
+	"ringHood"	: [
+		"{#adj#|0.2?-#proper#{'s}} #ring#",
+		"0.5?-#regularHood#",
+		"0.1?-#streetHood#",
+		"SQUARE?-#squareHood#",
+		"MANOR?-#manorName#",
+		"PARK?-#parkHood#"],
+
+	"squareHood"	: [
+		"{#adj#|0.2?-#proper#|0.1?-#dir#} #square#",
+		"0.01?-{#proper.possessive#|the} forum"],
+
+	"centralHood"	: "{old|0.5?-trade} #ward#",
+
+	"bankHood" : "{#adj#|0.3?-#dir#} #bank#",
+
+	"manorName"	: [
+		"{#proper#|#adj#|#compNoun#} #manor#"
+	],
+
+	"place"	: [
+		"side", "place", "end", "town", "village", "reach", "point", "borough",
+		"mile", "yard", "street{s}", "alley", "lane", "walk", "square", "row", "steps", "pass"],
+	"ward"	: ["quarter", "0.8?-ward", "0.3?-district", "0.2?-town"],
+
+	"park"	: ["green", "0.5?-park", "0.4?-hill", "0.3?-grove", "0.2?-lawn"],
+	"bank"	: ["bank", "0.5?-side", "0.3?-wharf"],
+	"gate"	: ["gate", "0.5?-road", "0.3?-way"],
+	"bridge": ["bridge", "0.3?-ford", "0.2?-crossing", "0.1?-ferry"],
+	"docks"	: ["docks", "0.5?-port", "0.3?-harbour"],
+	"street": ["street", "0.3?-way", "0.3?-road", "!SMALL&0.1?-avenue", "0.1?-walk", "SMALL?-lane", "SMALL?-row"],
+	"square": ["square", "0.3?-plaza", "0.3?-place", "0.2?-market", "0.1?-field", "0.1?-quad{rangle}"],
+	"ring"	: ["ring", "circle", "loop", "hill", "0.5?-band", "0.5?-round", "0.1?-circus", "0.05?-belt"],
+	"manor"	: ["temple", "church", "shrine", "palace", "palazzo", "manor", "mansion", "house"],
+
+	"noun"	: [
+		"ring", "star", "cross", "crest", "horn", "arch", "knot",
+		"church", "chapel", "well", "market", "house", "fair", "wall", "court", "forge", 
+		"lodge", "hall", "tower", "mill", "stair", "spring", "rock", "cliff", "hill", "keep",
+		"field", "ridge"],
+	"compNoun" : "#adj##noun#",
+	"adj"	: [
+		"new", "old", 
+		"cold", "hot", 
+		"fairy", "ghost", "haunted", "fey", "spirit",
+		"lost", "hidden", "forlorn", "gloom", "shadow",
+		"night", "dawn", "dusk", "noon", "twilight",
+		"iron", "silver", "golden", "bronze", "copper", "stone", "timber",
+		"bright", "dark", "murky", "light", "clear",
+		"silk", "cotton", "wool", "ash", "char", "chalk", "pearl", "glass", "hay", "clay", "bone", "amber",
+		"white", "black", "green", "grey", "red", "purple",
+		"mist", "fog", "clear", "moon", "wind", "rain", "sun", "cloud", "smoke", "snow", "storm",
+		"cherry", "apple", "cabbage", "oak", "ivy", "heather", "elm", "ivy", "wheat", "bloom",
+		"meat", "milk", "bread", "egg", "dairy", "cheese", "beer", "wine", "mead", "salt", "spice", "honey",
+		"raven", "dog", "rat", "chicken", "cattle", "sheep", "fish", "cat", "pig",
+		"far", "high", "middle", "low", "long", "short", "narrow", "wide", "sea",
+		"great", "small", "little", "twin",
+		"#compNoun#",
+		"@dir",
+		"@occupation"],
+
+	"occupation" : [
+		"fishers", "bakers", "kings", "beggars", "cobblers", "merchants", "shepherds", "tailors", 
+		"friars", "knights", "bards"],
+
+	"number"	: ["two", "three", "four", "five", "six", "seven", "twin"],
+	"dir"		: ["north", "south", "east", "west", "0.2?-winter", "0.2?-summer", "0.1?-sunrise", "0.1?-sunset"]
+}

@@ -1,0 +1,81 @@
+﻿{
+	"genericPlace" : ["#genericName#", "#feature#"],
+	"feature" : [
+		"COAST?-#coastName#",
+		"RIVER?-#riverName#",
+		"SQUARE?-#squareName#",
+		"STREET?-#streetName#",
+		"WALL?-#wallName#",
+		"0.5&PARK?-#parkName#",
+		"0.1?-#genericName#"],
+
+	"coastPlace"	: ["#coastName#",	"#genericPlace#"],
+	"riverPlace"	: ["#riverName#",	"#genericPlace#"],
+	"parkPlace"		: ["#parkName#",	"#genericPlace#"],
+	"squarePlace"	: ["#squareName#",	"#genericPlace#"],
+	"streetPlace"	: ["#streetName#",	"#genericPlace#"],
+	"wallPlace"		: ["#wallName#",	"#genericPlace#"],
+
+	"genericName" : [
+		"{#adj#|#job.s#} #placeNoun#", 
+		"#double#",
+		"0.2?-#saint#"],
+	"placeNoun" : [
+		"ward", "borough", "quarter", "district",
+		"court", "side", "village", "town"],
+
+	"coastName" : [
+		"{#dir#|#adj#} coast",
+		"{#adj#|#double#} beach",
+		"{#dir#|#adj#|#job.s#} port",
+		"0.4?-#adj# {bay|harbour}"],
+
+	"riverName" : ["{#dir#|#adj#} #riverNoun#"],
+	"riverNoun" : ["bridge", "bank", "0.3?-ferry"],
+
+	"parkName" : ["{#double#|#adj#|#dir#|#noble#'s|#tree#} #parkNoun#"],
+	"parkNoun": ["park", "grove", "garden{s}"],
+
+	"squareName" : [
+		"{#saint#|#given#}'s square",
+		"{#double#|#adj#|#noble#'s} {square|field{s}|green}",
+		"{#noble#'s|#job.s#|#goods#} market"],
+
+	"streetName" : ["{#adj#|#job.s#|#goods#} #streetNoun#"],
+	"streetNoun" : ["street", "{alley|lane}", "road", "{row|walk}", "path"],
+
+	"wallName" : ["{#adj#|#job.s#|#goods#|#dir#} gate"],
+
+	"double" : "#syl1##syl2#",
+	"syl1" : [
+		"amber", "ash", "barks", "blooms", "bog", "cold", "down", "east", "fins", "fish", 
+		"green", "high", "ice", "low", "monk", "moon", "north", "out", "pale", "south", 
+		"rose", "thorn", "west"],
+	"syl2" : [
+		"bury", "cot", "fall", "field", "ford", "ham", "hill", "horn",
+		"house", "stone", "ton", "tree", "way", "well", "wick", "wood"],
+
+	"adj" : [
+		"old", "new", "grand",
+		"little",
+		"upper", "lower", "high", "low",
+		"white", "black", "red", "green",
+		"copper", "bronze", "silver", "golden", "iron",
+		"sand", "stone", "hay", "clay",
+		"misty", "windy", "bright", "shadow",
+		"raven", "boar", "lion",
+		"silent", "singing", "waling"],
+	"noun" : ["cross", "step", "hole"],
+
+	"dir" : ["north{ern}", "south{ern}", "east{ern}", "west{ern}"],
+
+	"noble" : ["king", "queen", "bishop", "duke"],
+	"job" : [
+		"{peasant|farmer}", "fisher", "beggar", "merchant", "sailor", "miner", 
+		"artisan", "soldier", "scholar", "smith"],
+	"goods" : ["grain", "herbs", "meat", "timber", "ore", "kettle", "silk", "wool", "fish"],
+
+	"tree" : ["elm", "birch", "oak", "pine", "willow", "maple"],
+
+	"saint" : "st #given#"
+}

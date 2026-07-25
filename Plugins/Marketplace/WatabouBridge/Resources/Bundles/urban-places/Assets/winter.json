@@ -1,0 +1,22 @@
+﻿{
+  "strNormal": "0.7",
+  "strRoad": "3.0",
+  "clrShadow": "#C1C1CC",
+  "clrRoad": "#B6B9BF",
+  "strThin": "0.4",
+  "clrShallow": "#BECFD8",
+  "clrStone": "#A9ABB2",
+  "clrInk": "#4C3B4C",
+  "clrGrass": "#FDFEFF",
+  "clrRoof": [
+    "#998A89",
+    "#8C8482"
+  ],
+  "clrLights": "#000000",
+  "clrBg": "#EDF1F2",
+  "clrWater": "#8FA6BF",
+  "clrTree": [
+    "#9FA6A8",
+    "#B0AEB2"
+  ]
+}

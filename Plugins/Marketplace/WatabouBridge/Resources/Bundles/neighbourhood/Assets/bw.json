@@ -1,0 +1,32 @@
+{
+  "colorLights": "#000000",
+  "colorText": "#000000",
+  "colorGreen": "#FFFFFF",
+  "strokeThin": "0.5",
+  "colorAmbience": "#FFFFFF",
+  "colorTree": [
+    "#FFFFFF"
+  ],
+  "roadOutlined": "false",
+  "details": "true",
+  "colorStone": "#FFFFFF",
+  "colorShadow": "#FFFFFF",
+  "colorRoad": "#EEEEEE",
+  "colorWater": "#FFFFFF",
+  "varTree": "0.0",
+  "roadWidth": "0.1",
+  "shadowLength": "0.0",
+  "colorRoof": [
+    "#FFFFFF"
+  ],
+  "cityLights": "0.0",
+  "colorBg": "#FFFFFF",
+  "colorCupola": "#FFFFFF",
+  "roadTwisting": "false",
+  "varRoof": "0.0",
+  "roadSurface": "Plain",
+  "shadowDir": "180.0",
+  "shadowAlpha": "0.0",
+  "strokeNormal": "1.5",
+  "colorOutline": "#000000"
+}
