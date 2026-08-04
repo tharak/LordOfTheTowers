@@ -18,6 +18,10 @@
 		{
 			"Name": "WatabouBridge",
 			"Enabled": true
+		},
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true
 		}
 	]
 }
