@@ -3,6 +3,13 @@
 	"EngineAssociation": "2580C4A8-AE7E-48BC-A91A-F8BF49C4AF6A",
 	"Category": "",
 	"Description": "",
+	"Modules": [
+		{
+			"Name": "LordOfTheTowers",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "ModelingToolsEditorMode",
