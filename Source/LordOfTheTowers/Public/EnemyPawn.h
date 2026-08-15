@@ -24,6 +24,11 @@ public:
     UFUNCTION(BlueprintImplementableEvent, Category="AI|Combat")
     void FireWeapon();
 
+    // Called when the AI acquires or loses its target, so the pawn can show a
+    // visual "alert" indicator (e.g. an emissive glow) while it has one.
+    UFUNCTION(BlueprintImplementableEvent, Category="AI|Perception")
+    void SetAlertVisual(bool bAlert);
+
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="AI")
     float AttackRange = 600.f;
 };

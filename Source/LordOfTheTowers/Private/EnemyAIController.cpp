@@ -9,6 +9,7 @@
 #include "Perception/AISense_Sight.h"
 #include "GenericTeamAgentInterface.h"
 #include "Kismet/GameplayStatics.h"
+#include "EnemyPawn.h"
 
 AEnemyAIController::AEnemyAIController()
 {
@@ -73,7 +74,9 @@ void AEnemyAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus St
         return;
     }
 
-    if (Stimulus.WasSuccessfullySensed())
+    const bool bSensed = Stimulus.WasSuccessfullySensed();
+
+    if (bSensed)
     {
         BB->SetValueAsObject(EnemyAIBlackboardKeys::TargetActor, Actor);
     }
@@ -82,5 +85,10 @@ void AEnemyAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus St
         // No investigate/search phase in v1 — drop the target immediately and
         // let the Behavior Tree fall back to Patrol.
         BB->ClearValue(EnemyAIBlackboardKeys::TargetActor);
+    }
+
+    if (AEnemyPawn* EnemyPawn = Cast<AEnemyPawn>(GetPawn()))
+    {
+        EnemyPawn->SetAlertVisual(bSensed);
     }
 }
