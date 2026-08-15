@@ -41,13 +41,13 @@ Adding a proper AI-controlled enemy: a perception-driven state loop (patrol → 
 - Behavior Tree (`BT_EnemyPatrolChaseAttack`): root Selector — Combat branch (gated by `TargetActor` IsSet, observer-abort) containing an Attack/Chase sub-selector, falling back to a Patrol branch (random point near spawn → move → wait).
 
 **Status checklist** (mirrors the [Project board](https://github.com/users/tharak/projects/7)):
-- [ ] Add `AIModule`/`NavigationSystem`/`GameplayTasks` to Build.cs
-- [ ] `AEnemyPawn` base class
-- [ ] `AEnemyAIController` + perception setup
-- [ ] BT support classes (service/tasks/decorator)
-- [ ] `BP_EnemyAI` Blueprint
-- [ ] `AIC_Enemy` Blueprint
-- [ ] `BB_Enemy` + `BT_EnemyPatrolChaseAttack` assets (manual, in-editor)
+- [x] Add `AIModule`/`NavigationSystem`/`GameplayTasks` to Build.cs
+- [x] `AEnemyPawn` base class
+- [x] `AEnemyAIController` + perception setup
+- [x] BT support classes (service/tasks/decorator)
+- [x] `BP_EnemyAI` Blueprint
+- [x] `AIC_Enemy` Blueprint
+- [ ] `BB_Enemy` + `BT_EnemyPatrolChaseAttack` assets (manual, in-editor — **next step, needs a human in the Unreal Editor**: create both assets under `Content/Blueprints/AI/`, build the tree per the "Behavior Tree" layout below, then set `AIC_Enemy`'s `BehaviorTreeAsset` to it)
 - [ ] Place test instances, verify patrol/chase/attack loop
 
 **Explicitly out of scope for this pass:** investigate/search-on-lost-target, flee/retreat at low health, call-for-backup/squad alerting, multiple enemy archetypes, multiplayer/replication, real team-based friend/foe on the player, homing/aimed projectiles, wave-based spawner.
