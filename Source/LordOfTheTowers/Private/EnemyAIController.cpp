@@ -4,8 +4,11 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Perception/AIPerceptionComponent.h"
+#include "Perception/AIPerceptionSystem.h"
 #include "Perception/AISenseConfig_Sight.h"
+#include "Perception/AISense_Sight.h"
 #include "GenericTeamAgentInterface.h"
+#include "Kismet/GameplayStatics.h"
 
 AEnemyAIController::AEnemyAIController()
 {
@@ -47,6 +50,17 @@ void AEnemyAIController::OnPossess(APawn* InPawn)
         if (InPawn)
         {
             BB->SetValueAsVector(EnemyAIBlackboardKeys::HomeLocation, InPawn->GetActorLocation());
+        }
+    }
+
+    // The player pawn has no UAIPerceptionStimuliSourceComponent (and we don't
+    // modify BP_PawnPlayer to add one), so sight perception has nothing to
+    // detect unless we register it as a source explicitly.
+    if (UAIPerceptionSystem* PerceptionSystem = UAIPerceptionSystem::GetCurrent(GetWorld()))
+    {
+        if (APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0))
+        {
+            PerceptionSystem->RegisterSource(*PlayerPawn);
         }
     }
 }
