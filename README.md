@@ -28,9 +28,9 @@ This file exists so a fresh session (human or AI) with no prior conversation his
 - Project board: [LordOfTheTowers](https://github.com/users/tharak/projects/7) — general-purpose repo backlog, not feature-scoped.
 - Issues: filed per implementation unit, one per board card.
 
-## In-flight feature: AI Enemy Controller (ARC-Raiders-style patrol/detect/chase/attack)
+## Shipped feature: AI Enemy Controller (ARC-Raiders-style patrol/detect/chase/attack)
 
-Adding a proper AI-controlled enemy: a perception-driven state loop (patrol → detect → chase → attack), scoped to this project's bounded-arena SHMUP (no investigate/search, no flee, no squad alerting, no multiple enemy archetypes in v1).
+A perception-driven AI enemy loop (patrol → detect → chase → attack), scoped to this project's bounded-arena SHMUP (no investigate/search, no flee, no squad alerting, no multiple enemy archetypes in v1). Verified end-to-end in PIE. All 8 tracked issues closed — see [Project board](https://github.com/users/tharak/projects/7).
 
 **Architecture decisions:**
 - Movement: direct-steering Behavior Tree tasks that set `MoveVector` on `BP_MovableComponent`/`BP_RotationComponent`, mirroring how the player already moves — not `MoveToLocation`/NavMesh (arena has no NavMesh and isn't walkable terrain).
@@ -38,16 +38,11 @@ Adding a proper AI-controlled enemy: a perception-driven state loop (patrol → 
 - New Blueprints (siblings, not edits): `BP_EnemyAI` (parent `AEnemyPawn`, own component instances), `AIC_Enemy` (parent `AEnemyAIController`), all under `Content/Blueprints/AI/`.
 - Blackboard (`BB_Enemy`): `TargetActor` (Object), `ChaseLocation` (Vector), `PatrolLocation` (Vector), `HomeLocation` (Vector).
 - Perception: player has no `IGenericTeamAgentInterface`, so it reads as Neutral — sight sense configured to detect Neutrals (documented simplification; revisit if a real team system is added later).
-- Behavior Tree (`BT_EnemyPatrolChaseAttack`): root Selector — Combat branch (gated by `TargetActor` IsSet, observer-abort) containing an Attack/Chase sub-selector, falling back to a Patrol branch (random point near spawn → move → wait).
+- Behavior Tree (`BT_EnemyPatrolChaseAttack`): root Selector — Combat **Selector** (gated by `TargetActor` IsSet, observer-abort; must be a Selector not a Sequence, or the Attack branch failing out-of-range would abort the whole Combat branch instead of falling through to Chase) containing Attack and Chase sequences, falling back to a Patrol branch (random point near spawn → move → wait).
 
-**Status checklist** (mirrors the [Project board](https://github.com/users/tharak/projects/7)):
-- [x] Add `AIModule`/`NavigationSystem`/`GameplayTasks` to Build.cs
-- [x] `AEnemyPawn` base class
-- [x] `AEnemyAIController` + perception setup
-- [x] BT support classes (service/tasks/decorator)
-- [x] `BP_EnemyAI` Blueprint
-- [x] `AIC_Enemy` Blueprint
-- [ ] `BB_Enemy` + `BT_EnemyPatrolChaseAttack` assets (manual, in-editor — **next step, needs a human in the Unreal Editor**: create both assets under `Content/Blueprints/AI/`, build the tree per the "Behavior Tree" layout below, then set `AIC_Enemy`'s `BehaviorTreeAsset` to it)
-- [ ] Place test instances, verify patrol/chase/attack loop
+**Bugs found and fixed via live PIE testing** (worth knowing if this area regresses):
+1. `AEnemyAIController` must call `UAIPerceptionSystem::RegisterSource` on the player pawn in `OnPossess` — the player has no `UAIPerceptionStimuliSourceComponent`, so sight perception has nothing to detect otherwise, regardless of range/facing.
+2. `BP_EnemyAI`'s `OnComponentHit` must only `DestroyActor` when the hit actor is a `BP_Projectile` owned by someone other than itself — a naive "destroy on any hit" (copied from `BP_PawnEnemy`) kills the enemy on ordinary collision with arena walls or the player's own body during normal patrol/chase movement.
+3. `BP_EnemyAI`'s `FireWeapon` spawns projectiles offset 105 units along the actor's forward vector (matching `BP_PawnPlayer`'s `ProjectileSpawnPoint`) — spawning at the bare actor transform overlaps the enemy's own collision.
 
 **Explicitly out of scope for this pass:** investigate/search-on-lost-target, flee/retreat at low health, call-for-backup/squad alerting, multiple enemy archetypes, multiplayer/replication, real team-based friend/foe on the player, homing/aimed projectiles, wave-based spawner.
