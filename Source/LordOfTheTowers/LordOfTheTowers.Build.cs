@@ -10,7 +10,10 @@ public class LordOfTheTowers : ModuleRules
         {
             "Core",
             "CoreUObject",
-            "Engine"
+            "Engine",
+            "AIModule",
+            "NavigationSystem",
+            "GameplayTasks"
         });
     }
 }
