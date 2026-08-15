@@ -46,3 +46,5 @@ A perception-driven AI enemy loop (patrol → detect → chase → attack), scop
 3. `BP_EnemyAI`'s `FireWeapon` spawns projectiles offset 105 units along the actor's forward vector (matching `BP_PawnPlayer`'s `ProjectileSpawnPoint`) — spawning at the bare actor transform overlaps the enemy's own collision.
 
 **Explicitly out of scope for this pass:** investigate/search-on-lost-target, flee/retreat at low health, call-for-backup/squad alerting, multiple enemy archetypes, multiplayer/replication, real team-based friend/foe on the player, homing/aimed projectiles, wave-based spawner.
+
+**Follow-up addition:** `AEnemyPawn::SetAlertVisual(bool)` (called from `AEnemyAIController::OnTargetPerceptionUpdated`) drives a runtime dynamic material instance to a red emissive glow (`EmissiveColour`/`EmissiveStrength` on `MI_PlaneEnemy`, both already-exposed parameters) while the enemy has a target, off otherwise — a visible "found you" indicator.
